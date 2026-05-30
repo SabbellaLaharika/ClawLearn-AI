@@ -1,0 +1,20 @@
+{
+  "model": {
+    "provider": "ollama",
+    "name": "llama3:8b"
+  },
+  "search": {
+    "provider": "duckduckgo"
+  },
+  "plugins": {
+    "entries": {
+      "telegram": {
+        "enabled": true,
+        "package": "@openclaw/plugin-telegram",
+        "config": {
+          "botToken": "${env.TELEGRAM_BOT_TOKEN}"
+        }
+      }
+    }
+  }
+}
