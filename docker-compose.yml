@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  openclaw-agent:
+    build: .
+    container_name: openclaw-telegram-agent
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      # Explicitly mapping from the .env file
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+    volumes:
+      # Mount memory persistence to host to avoid losing profile data on container restart
+      - openclaw_memory:/root/.openclaw/memory
+    # If running a local Ollama instance on the host machine, you may need to add network settings here
+    # network_mode: "host" 
+
+volumes:
+  openclaw_memory:
+    description: "Persistent storage for OpenClaw user profiles"
